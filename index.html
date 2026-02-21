@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOYS PAYMEN STORE</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+}
+
+.container{
+    width:95%;
+    max-width:400px;
+    background:#111;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 40px cyan;
+}
+
+/* LOGO */
+.logo img{
+    width:180px;
+    margin-bottom:15px;
+    filter:drop-shadow(0 0 20px cyan);
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+/* TITLE */
+h1{
+    font-size:22px;
+    color:cyan;
+    text-shadow:0 0 20px cyan;
+}
+
+/* SUBTEXT */
+.subtext{
+    margin-top:8px;
+    margin-bottom:15px;
+    font-size:14px;
+    color:yellow;
+    font-weight:bold;
+    text-shadow:0 0 10px yellow;
+    animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0.4;}
+}
+
+.menu-btn{
+    width:100%;
+    padding:18px;
+    margin:12px 0;
+    border-radius:20px;
+    border:none;
+    font-size:18px;
+    font-weight:bold;
+    background:#eee;
+    color:black;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.menu-btn:hover{
+    transform:scale(1.05);
+}
+
+.content{
+    margin-top:20px;
+    display:none;
+    animation:fade 0.4s ease-in-out;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.qr img{
+    width:220px;
+    border-radius:15px;
+    box-shadow:0 0 30px cyan;
+}
+
+.note{
+    margin-top:15px;
+    font-size:14px;
+    color:yellow;
+    font-weight:bold;
+    background:#222;
+    padding:10px;
+    border-radius:10px;
+    box-shadow:0 0 15px yellow;
+}
+
+.number{
+    font-size:20px;
+    font-weight:bold;
+    color:cyan;
+    margin:15px 0;
+}
+
+.copy-btn{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:cyan;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+    <div class="logo">
+        <!-- GANTI src dengan nama file jika kamu simpan lokal -->
+        <img src="https://files.catbox.moe/7ktk19.jpg" alt="BOYS LOGO">
+    </div>
+
+    <h1>BOYS PAYMEN STORE</h1>
+    <div class="subtext">PENCET DI BAWAH INI BOSS</div>
+
+    <button class="menu-btn" onclick="showQR()">Qriss</button>
+    <button class="menu-btn" onclick="showWallet()">E-Wallet</button>
+
+    <!-- QR CONTENT -->
+    <div class="content" id="qrContent">
+        <div class="qr">
+            <img src="https://img2.pixhost.to/images/5410/690012142_jarroffc.jpg">
+        </div>
+
+        <div class="note">
+            NOTE KALO PAKE QR MAKA SS BUKTI DI DETAIL
+        </div>
+    </div>
+
+    <!-- WALLET CONTENT -->
+    <div class="content" id="walletContent">
+        <p>DANA</p>
+        <div class="number" id="dana">085641858083</div>
+        <button class="copy-btn" onclick="copyNumber()">COPY NOMOR</button>
+    </div>
+
+</div>
+
+<script>
+function showQR(){
+    document.getElementById("qrContent").style.display="block";
+    document.getElementById("walletContent").style.display="none";
+}
+
+function showWallet(){
+    document.getElementById("walletContent").style.display="block";
+    document.getElementById("qrContent").style.display="none";
+}
+
+function copyNumber(){
+    let text=document.getElementById("dana").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Nomor berhasil di copy 🔥");
+}
+</script>
+
+</body>
+</html>
